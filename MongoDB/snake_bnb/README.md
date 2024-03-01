@@ -10,4 +10,4 @@ This project was developed based on the course. [MongoDB Quickstart with Python]
 
 # Requirements
 
-Para correr este projeto é necessário ter em instalados os requerimentos presentes no ficheiro [requirements.txt]().
+Para correr este projeto é necessário ter em instalados os requerimentos presentes no ficheiro [requirements.txt](MongoDB/snake_bnb/requirements.txt).
