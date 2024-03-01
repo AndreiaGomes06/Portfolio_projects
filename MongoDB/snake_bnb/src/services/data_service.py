@@ -105,7 +105,7 @@ def get_available_cages(checkin: datetime.datetime, checkout: datetime.datetime,
     # Order by price (lowest to highest) and if same price order by square meters (largest ones first)
     cages = query.order_by('price', '-square_meters')
 
-    # We have to make sure that the check in and check out conditions on teh query are both met at the same time by one singular new booking
+    # We have to make sure that the check in and check out conditions on the query are both met at the same time by one singular new booking
     # $elemmatch would do the same
     final_cages = []
     for c in cages:
