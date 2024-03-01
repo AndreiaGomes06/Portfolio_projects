@@ -83,7 +83,8 @@ def add_snake(account: Owner, name: str, length: float, species: str, is_venomou
 def get_snakes_for_user(user_id: bson.ObjectId) -> List[Snake]:
     owner = Owner.objects(id=user_id).first()
     snakes = Snake.objects(id__in=owner.snake_ids).all()
-
+    
+    # To run the querie-list()
     return list(snakes)
 
 def get_available_cages(checkin: datetime.datetime, checkout: datetime.datetime, snake: Snake) -> List[Cage]:
