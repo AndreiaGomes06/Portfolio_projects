@@ -4,3 +4,5 @@ This project aims to simplify the booking process similar to Airbnb, but for sna
 
 Developed in Python, this project utilizes MongoDB as the database to store the entered information. The intention behind this project was to deepen the understanding of handling non-relational databases like MongoDB.
 
+# Description
+
