@@ -6,7 +6,7 @@ Developed in Python, this project utilizes MongoDB, through mongoengine ODM, as 
 
 # Acknowledgements
 
-This project was developed based on the course. [MongoDB Quickstart with Python](https://training.talkpython.fm/courses/details/mongodb-python-quickstart-mongoengine), which can also be consulted at [github](https://github.com/mikeckennedy/mongodb-quickstart-course/tree/master).
+This project was developed based on the course [MongoDB Quickstart with Python](https://training.talkpython.fm/courses/details/mongodb-python-quickstart-mongoengine), which can also be consulted at [github](https://github.com/mikeckennedy/mongodb-quickstart-course/tree/master).
 
 # Requirements
 
