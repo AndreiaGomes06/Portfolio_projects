@@ -92,7 +92,7 @@ def get_available_cages(checkin: datetime.datetime, checkout: datetime.datetime,
     # Check if the cage is a fit for the snake (size and venomous)
     min_size = snake.length / 4                 # Has to be at least 1/4 of the size of the snake
     
-    # We have to make sure that the date for checking in precives/is equal to the date the guest wants to check in (same whith check out)
+    # We have to make sure that the date for checking available is before or equal to the date the guest wants to check in (same whith check out)
     query = Cage.objects() \
         .filter(square_meters__gte=min_size) \
         .filter(bookings__check_in_date__lte=checkin) \
