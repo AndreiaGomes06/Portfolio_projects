@@ -6,9 +6,7 @@ from dotenv import load_dotenv, find_dotenv
 # load of the password
 load_dotenv(find_dotenv()) 
 
-password = os.environ.get("MONGODB_PWD")
-
-uri = f"mongodb+srv://pg45463:{password}@cluster0.nw3alsv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = os.environ.get("MONGODB_PWD")
 
 client = MongoClient(uri)
 
@@ -207,3 +205,4 @@ def add_address_relationship(person_id, address):
     address_collection.insert_one(address)
 
 #add_address_relationship("65e7ac06fa297eac01e2d4d9", address)
+
