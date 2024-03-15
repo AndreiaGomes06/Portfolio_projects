@@ -10,6 +10,6 @@ This project was developed in PySpark using the Databricks tool. Two different f
 
 [Sales_analysis_pyspark.html](Sales_analysis_pyspark.html): HTML file extracting information such as Total amount spent by each customer, Total amount spent on each food category, Total amount of sales in each month, Yearly sales, Monthly sales, Quarterly sales, How many times each product has been purchased, Top 5 ordered items, Top ordered item, Number of times each customer ordered, Frequency of customers that order from the Restaurant, Total sales by each country, Total sales by order_source.
 
-[Sales_analysis_notebook.ipynb](Sales_analysis_notebook.ipynb): Notebook version in ipynb format of the file <Sales_analysis_pyspark.html>.
+[Sales_analysis_notebook.ipynb](Sales_analysis_notebook.ipynb): Notebook version in ipynb format of the file [Sales_analysis_pyspark.html](Sales_analysis_pyspark.html).
 
 [Sales_analysis_dashboard.html](Sales_analysis_dashboard.html): HTML file displaying graphical results of the data extracted.
