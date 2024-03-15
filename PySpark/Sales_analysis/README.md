@@ -12,7 +12,7 @@ This project was developed in PySpark using the [Databricks](https://www.databri
 
 [Databricks](https://www.databricks.com/) provides the choice to create a dashboard that shows the findings graphically:
 
-![Gif](PySpark/Sales_analysis/Sales_analysis_project_dashboard_gif.gif)
+![](Sales_analysis_project_dashboard_gif.gif)
 
 ***
 It's also possible to download the raw HTML files of the framework and the dashboard and upload them directly into your [Databricks](https://www.databricks.com/) account:
