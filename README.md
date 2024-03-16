@@ -17,4 +17,5 @@ This repository was crafted to be a comprehensive resource for bolstering my com
 
 ### PySpark and DataBricks
 - Google apps project;
-- Sales analysis project on DataBricks.
+- Sales analysis project on DataBricks;
+- Facebook data analysis.
