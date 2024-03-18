@@ -10,10 +10,10 @@ The data underwent preprocessing followed by exploratory analysis.
 
 [Loan_analysis](Loan_analysis.ipynb): File containing the preprocessement of the data.
 
-[Loads analysis EDA](Loads analysis EDA.ipynb): Data exploratory analysis.
+[Loan_analysis_EDA](Loan_analysis_EDA.ipynb): Data exploratory analysis.
 
 It's also possible to download the raw HTML files of the framework and the dashboard and upload them directly into your [Databricks](https://www.databricks.com/) account:
 
-[Loads analysis EDA](Loads analysis EDA.html): HTML version of the file [Loads analysis EDA](Loads analysis EDA.ipynb) with the graphs obtained.
+[Loan_analysis_EDA](Loan_analysis_EDA.html): HTML version of the file [Loan_analysis_EDA](Loan_analysis_EDA.ipynb) with the graphs obtained.
 
 
