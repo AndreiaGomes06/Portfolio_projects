@@ -1,4 +1,4 @@
-# Loans Analysis Project
+# Lending Club Analysis Project
 
 This project was developed in PySpark using the [Databricks](https://www.databricks.com/) tool. The datasets used pertain to data from the Lending Club platform, a peer-to-peer (P2P) lending platform founded in 2006 in the United States. The platform connects investors seeking to lend money with borrowers looking for financing for various purposes, such as debt consolidation, funding personal projects, education, among others.
 
