@@ -21,5 +21,8 @@ This repository was crafted to be a comprehensive resource for bolstering my com
 - Facebook data analysis;
 - Lending Club data analysis.
 
+### Power BI
+  - Workspace Wonders data analysis.
+
 ### Docker
 - Demo app - Docker, Docker compose, Docker image.
