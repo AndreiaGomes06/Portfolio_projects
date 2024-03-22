@@ -4,7 +4,7 @@
 This repository was crafted to be a comprehensive resource for bolstering my comprehension across various facets of data analysis and data engineering. Within its confines, you'll discover a curated collection of projects designed to delve into diverse technologies such as MongoDB, SQL, and PySpark.
 
 ## Topics covered:
-`MongoDB` `PySpark` `SQL` `Docker`
+`MongoDB` `PySpark` `SQL` `Docker` `Power BI`
 
 ## Repository Content:
 
