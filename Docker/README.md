@@ -2,7 +2,7 @@
 
 The idea behind this project was to strengthen knowledge in Docker. For this purpose, a simple application developed in html and Node.js was used, and MongoDB was employed for data storage. All documents are Docker-based. It is possible to use the app by resorting to Docker or using Docker Compose, by creating a YAML document for this purpose. Finally, a Docker image was also generated based on the Dockerfile document.
 
-# With Docker Compose
+## With Docker Compose
 
 Step 1: Initiate mongodb and mongo-express
 ``` 
@@ -23,7 +23,7 @@ node server.js
 The nodejs app can be accessed from the web browser under http://localhost:3000.
 
 
-# With Docker
+## With Docker
 
 Step 1: Create the docker network.
 ```
@@ -50,7 +50,7 @@ node server.js
 ```
 The nodejs app can be accessed from the web browser under http://localhost:3000.
 
-# Build a Docker image from the app using the Dockerfile
+## Build a Docker image from the app using the Dockerfile
 
 The '.' denotes the location of the Dockerfile.
 ```
