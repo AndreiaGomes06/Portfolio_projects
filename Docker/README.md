@@ -5,4 +5,6 @@ The idea behind this project was to strengthen knowledge in Docker. For this pur
 # With Docker Compose
 
 Step 1: Initiate mongodb and mongo-express
-``` docker-compose -f docker-compose.yaml up ```
+``` 
+docker-compose -f docker-compose.yaml up 
+```
