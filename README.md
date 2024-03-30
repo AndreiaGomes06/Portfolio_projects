@@ -1,10 +1,10 @@
 # Data Projects Repository
 
 ## Overview
-This repository was crafted to be a comprehensive resource for bolstering my comprehension across various facets of data analysis and data engineering. Within its confines, you'll discover a curated collection of projects designed to delve into diverse technologies such as MongoDB, SQL, PySpark, Docker and Kubernetes, and data analysis tools such as Power BI. 
+This repository was crafted to be a comprehensive resource for bolstering my comprehension across various facets of data analysis and data engineering. Within its confines, you'll discover a curated collection of projects designed to delve into diverse technologies such as MongoDB, SQL, PySpark, ELT, AIrflow, Docker and Kubernetes, and data analysis tools such as Power BI. 
 
 ## Topics covered:
-`MongoDB` `PySpark` `SQL` `Docker` `Kubernetes` `Power BI`
+`MongoDB` `PySpark` `SQL` `Docker` `Kubernetes` `Power BI` `ELT` `DBT` `Airflow`
 
 ## Repository Content:
 
@@ -29,3 +29,6 @@ This repository was crafted to be a comprehensive resource for bolstering my com
 
 ### Kubernetes
 - Deployment of a simple web application.
+
+### ELT
+  - Basic ELT project implementation using Postgres, Docker, DBT and Airflow.
