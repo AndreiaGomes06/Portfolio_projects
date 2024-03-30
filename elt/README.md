@@ -9,4 +9,4 @@ To automate this process more efficiently, the Airflow orchestration tool was us
 # To Start the project
 1. Begin by confirming that Docker and Docker Compose are installed on your system.
 2. Next, clone this repository to your local machine.
-3. Navigate to the repository directory and execute docker compose up init-airflow -d to initiazile the Airflow container and than run docker compose up.
+3. Navigate to the repository directory and execute ```docker compose up init-airflow -d``` to initiazile the Airflow container and than run ```docker compose up```.
