@@ -1,0 +1,85 @@
+[0m20:10:27.325161 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020E876629C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020E880CF020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020E880CEF90>]}
+
+
+============================== 20:10:27.359162 | a9e3c688-e37b-48e1-a20c-ed81f0e3686d ==============================
+[0m20:10:27.359162 [info ] [MainThread]: Running with dbt=1.7.10
+[0m20:10:27.366163 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': 'C:\\Users\\Asus\\.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt init', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m20:10:36.114647 [debug] [MainThread]: Starter project path: C:\Users\Asus\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\include\starter_project
+[0m20:10:36.182677 [info ] [MainThread]: 
+Your new dbt project "custom_postgres" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m20:10:36.187675 [info ] [MainThread]: Setting up your profile.
+[0m20:11:35.927563 [info ] [MainThread]: Profile custom_postgres written to C:\Users\Asus\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m20:11:35.954570 [debug] [MainThread]: Command `dbt init` succeeded at 20:11:35.949582 after 69.51 seconds
+[0m20:11:35.965556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020E81C27E30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020E81D1E030>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020E81F54DD0>]}
+[0m20:11:35.979559 [debug] [MainThread]: Flushing usage events
+[0m20:16:15.602828 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E97075A00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E96D6F9E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E970769F0>]}
+
+
+============================== 20:16:15.616373 | d4d2f7bd-34ec-4caa-bf70-43762d158ca9 ==============================
+[0m20:16:15.616373 [info ] [MainThread]: Running with dbt=1.7.10
+[0m20:16:15.622380 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\Asus\\.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m20:16:15.625373 [info ] [MainThread]: dbt version: 1.7.10
+[0m20:16:15.627380 [info ] [MainThread]: python version: 3.12.2
+[0m20:16:15.629388 [info ] [MainThread]: python path: C:\Users\Asus\AppData\Local\Programs\Python\Python312\python.exe
+[0m20:16:15.631377 [info ] [MainThread]: os info: Windows-10-10.0.19045-SP0
+[0m20:16:15.914151 [info ] [MainThread]: Using profiles dir at C:\Users\Asus\.dbt
+[0m20:16:15.917154 [info ] [MainThread]: Using profiles.yml file at C:\Users\Asus\.dbt\profiles.yml
+[0m20:16:15.921857 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Asus\Desktop\elt\dbt_project.yml
+[0m20:16:15.940827 [info ] [MainThread]: adapter type: postgres
+[0m20:16:15.943818 [info ] [MainThread]: adapter version: 1.7.10
+[0m20:16:15.945821 [info ] [MainThread]: Configuration:
+[0m20:16:15.946820 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m20:16:15.948817 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m20:16:15.951818 [info ] [MainThread]: Required dependencies:
+[0m20:16:15.957828 [debug] [MainThread]: Executing "git --help"
+[0m20:16:16.146717 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m20:16:16.148718 [debug] [MainThread]: STDERR: "b''"
+[0m20:16:16.150719 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m20:16:16.157723 [info ] [MainThread]: Connection:
+[0m20:16:16.159730 [info ] [MainThread]:   host: host.docker.internal
+[0m20:16:16.162745 [info ] [MainThread]:   port: 5434
+[0m20:16:16.164719 [info ] [MainThread]:   user: postgres
+[0m20:16:16.166718 [info ] [MainThread]:   database: destination_db
+[0m20:16:16.169719 [info ] [MainThread]:   schema: public
+[0m20:16:16.175724 [info ] [MainThread]:   connect_timeout: 10
+[0m20:16:16.178719 [info ] [MainThread]:   role: None
+[0m20:16:16.180717 [info ] [MainThread]:   search_path: None
+[0m20:16:16.182716 [info ] [MainThread]:   keepalives_idle: 0
+[0m20:16:16.185721 [info ] [MainThread]:   sslmode: None
+[0m20:16:16.193719 [info ] [MainThread]:   sslcert: None
+[0m20:16:16.195717 [info ] [MainThread]:   sslkey: None
+[0m20:16:16.198719 [info ] [MainThread]:   sslrootcert: None
+[0m20:16:16.200717 [info ] [MainThread]:   application_name: dbt
+[0m20:16:16.207723 [info ] [MainThread]:   retries: 1
+[0m20:16:16.209721 [info ] [MainThread]: Registered adapter: postgres=1.7.10
+[0m20:16:16.212737 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m20:16:16.214718 [debug] [MainThread]: Using postgres connection "debug"
+[0m20:16:16.215716 [debug] [MainThread]: On debug: select 1 as id
+[0m20:16:16.217720 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:16:16.808320 [debug] [MainThread]: SQL status: SELECT 1 in 1.0 seconds
+[0m20:16:16.810930 [debug] [MainThread]: On debug: Close
+[0m20:16:16.812558 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m20:16:16.817060 [info ] [MainThread]: [31m1 check failed:[0m
+[0m20:16:16.821991 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Asus\Desktop\elt\dbt_project.yml> not found
+
+[0m20:16:16.826996 [debug] [MainThread]: Command `dbt debug` failed at 20:16:16.825988 after 2.20 seconds
+[0m20:16:16.829191 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m20:16:16.831646 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E96F40DA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E92E8F9E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E964EC230>]}
+[0m20:16:16.832781 [debug] [MainThread]: Flushing usage events

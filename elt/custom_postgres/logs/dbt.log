@@ -1,0 +1,2000 @@
+
+
+============================== 2024-03-27 21:23:52.343476 | 376fa510-5488-424d-8e15-ba8451679da7 ==============================
+[0m21:23:52.343476 [info ] [MainThread]: Running with dbt=1.4.7
+[0m21:23:52.362142 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/root', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_dir': '/dbt', 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m21:23:52.367699 [debug] [MainThread]: Tracking: tracking
+[0m21:23:52.904749 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b6f2d360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b6f2d7e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b6f2d3c0>]}
+[0m21:23:53.093698 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m21:23:53.136614 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m21:23:53.158864 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b6f2d810>]}
+[0m21:24:05.364521 [debug] [MainThread]: 1699: static parser successfully parsed example/actors.sql
+[0m21:24:05.541271 [debug] [MainThread]: 1699: static parser successfully parsed example/films.sql
+[0m21:24:06.024166 [debug] [MainThread]: 1699: static parser successfully parsed example/film_actors.sql
+[0m21:24:06.073494 [debug] [MainThread]: 1699: static parser successfully parsed example/film_ratings.sql
+[0m21:24:07.999422 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b563e440>]}
+[0m21:24:08.180342 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b6f280a0>]}
+[0m21:24:08.192692 [info ] [MainThread]: Found 4 models, 19 tests, 0 snapshots, 0 analyses, 291 macros, 0 operations, 0 seed files, 3 sources, 0 exposures, 0 metrics
+[0m21:24:08.208844 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b6f13bb0>]}
+[0m21:24:08.227679 [info ] [MainThread]: 
+[0m21:24:08.248105 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:24:08.298791 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db'
+[0m21:24:08.469433 [debug] [ThreadPool]: Using postgres connection "list_destination_db"
+[0m21:24:08.484155 [debug] [ThreadPool]: On list_destination_db: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:24:08.494313 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:24:14.755264 [debug] [ThreadPool]: SQL status: SELECT 6 in 6 seconds
+[0m21:24:14.761547 [debug] [ThreadPool]: On list_destination_db: Close
+[0m21:24:14.795328 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db_public'
+[0m21:24:14.823188 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m21:24:14.826071 [debug] [ThreadPool]: On list_destination_db_public: BEGIN
+[0m21:24:14.828405 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:24:15.028491 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[0m21:24:15.037455 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m21:24:15.044024 [debug] [ThreadPool]: On list_destination_db_public: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db_public"} */
+select
+      'destination_db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'destination_db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m21:24:15.155146 [debug] [ThreadPool]: SQL status: SELECT 5 in 0 seconds
+[0m21:24:15.163021 [debug] [ThreadPool]: On list_destination_db_public: ROLLBACK
+[0m21:24:15.177123 [debug] [ThreadPool]: On list_destination_db_public: Close
+[0m21:24:15.224193 [debug] [MainThread]: Using postgres connection "master"
+[0m21:24:15.226659 [debug] [MainThread]: On master: BEGIN
+[0m21:24:15.229551 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:24:15.409058 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:24:15.413922 [debug] [MainThread]: Using postgres connection "master"
+[0m21:24:15.420445 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m21:24:15.698547 [debug] [MainThread]: SQL status: SELECT 0 in 0 seconds
+[0m21:24:15.706579 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b5655180>]}
+[0m21:24:15.709123 [debug] [MainThread]: On master: ROLLBACK
+[0m21:24:15.720613 [debug] [MainThread]: Using postgres connection "master"
+[0m21:24:15.722616 [debug] [MainThread]: On master: BEGIN
+[0m21:24:15.737548 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:24:15.742062 [debug] [MainThread]: On master: COMMIT
+[0m21:24:15.744615 [debug] [MainThread]: Using postgres connection "master"
+[0m21:24:15.746592 [debug] [MainThread]: On master: COMMIT
+[0m21:24:15.757205 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m21:24:15.759895 [debug] [MainThread]: On master: Close
+[0m21:24:15.763615 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m21:24:15.772638 [info ] [MainThread]: 
+[0m21:24:15.828612 [debug] [Thread-1 (]: Began running node model.custom_postgres.actors
+[0m21:24:15.836739 [info ] [Thread-1 (]: 1 of 4 START sql table model public.actors ..................................... [RUN]
+[0m21:24:15.842893 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.actors'
+[0m21:24:15.846012 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.actors
+[0m21:24:15.860992 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.actors"
+[0m21:24:15.923009 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (compile): 2024-03-27 21:24:15.850251 => 2024-03-27 21:24:15.922726
+[0m21:24:15.925314 [debug] [Thread-1 (]: Began executing node model.custom_postgres.actors
+[0m21:24:16.109370 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.actors"
+[0m21:24:16.177320 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:24:16.180382 [debug] [Thread-1 (]: On model.custom_postgres.actors: BEGIN
+[0m21:24:16.184884 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:24:16.322980 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:24:16.326904 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:24:16.329742 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."actors"
+  );
+  
+[0m21:24:16.384900 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:24:16.411684 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:24:16.420565 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors" rename to "actors__dbt_backup"
+[0m21:24:16.445456 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:16.465489 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:24:16.474238 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors__dbt_tmp" rename to "actors"
+[0m21:24:16.497717 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:16.687966 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m21:24:16.691692 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:24:16.696143 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m21:24:16.724991 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:24:16.754781 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:24:16.758170 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+drop table if exists "destination_db"."public"."actors__dbt_backup" cascade
+[0m21:24:16.787695 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:24:16.794883 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (execute): 2024-03-27 21:24:15.927160 => 2024-03-27 21:24:16.794699
+[0m21:24:16.801054 [debug] [Thread-1 (]: On model.custom_postgres.actors: Close
+[0m21:24:16.806563 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b55e98d0>]}
+[0m21:24:16.820783 [info ] [Thread-1 (]: 1 of 4 OK created sql table model public.actors ................................ [[32mSELECT 20[0m in 0.97s]
+[0m21:24:16.839433 [debug] [Thread-1 (]: Finished running node model.custom_postgres.actors
+[0m21:24:16.844658 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_actors
+[0m21:24:16.851816 [info ] [Thread-1 (]: 2 of 4 START sql table model public.film_actors ................................ [RUN]
+[0m21:24:16.857098 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_actors'
+[0m21:24:16.860643 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_actors
+[0m21:24:16.886612 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_actors"
+[0m21:24:16.942911 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (compile): 2024-03-27 21:24:16.863900 => 2024-03-27 21:24:16.942562
+[0m21:24:16.945568 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_actors
+[0m21:24:16.971261 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_actors"
+[0m21:24:17.002632 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:24:17.005119 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: BEGIN
+[0m21:24:17.007316 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:24:17.309007 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:24:17.324971 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:24:17.337491 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."film_actors"
+  );
+  
+[0m21:24:17.659880 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:24:17.702617 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:24:17.709412 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors" rename to "film_actors__dbt_backup"
+[0m21:24:17.729823 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:17.777190 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:24:17.789546 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors__dbt_tmp" rename to "film_actors"
+[0m21:24:17.803439 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:17.820205 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m21:24:17.822637 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:24:17.825076 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m21:24:17.841594 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:24:17.854262 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:24:17.858468 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+drop table if exists "destination_db"."public"."film_actors__dbt_backup" cascade
+[0m21:24:17.887024 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:24:17.897517 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (execute): 2024-03-27 21:24:16.951084 => 2024-03-27 21:24:17.897154
+[0m21:24:17.904070 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: Close
+[0m21:24:17.909469 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b4dbe290>]}
+[0m21:24:17.924670 [info ] [Thread-1 (]: 2 of 4 OK created sql table model public.film_actors ........................... [[32mSELECT 20[0m in 1.05s]
+[0m21:24:17.947692 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_actors
+[0m21:24:17.955115 [debug] [Thread-1 (]: Began running node model.custom_postgres.films
+[0m21:24:17.959744 [info ] [Thread-1 (]: 3 of 4 START sql table model public.films ...................................... [RUN]
+[0m21:24:17.971740 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.films'
+[0m21:24:17.975702 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.films
+[0m21:24:17.993498 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.films"
+[0m21:24:18.027965 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (compile): 2024-03-27 21:24:17.978718 => 2024-03-27 21:24:18.027658
+[0m21:24:18.035090 [debug] [Thread-1 (]: Began executing node model.custom_postgres.films
+[0m21:24:18.063300 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.films"
+[0m21:24:18.095367 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:24:18.101176 [debug] [Thread-1 (]: On model.custom_postgres.films: BEGIN
+[0m21:24:18.107290 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:24:18.362938 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:24:18.372770 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:24:18.376390 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+
+  
+    
+
+  create  table "destination_db"."public"."films__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."films"
+  );
+  
+[0m21:24:18.404671 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:24:18.417543 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:24:18.420041 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films" rename to "films__dbt_backup"
+[0m21:24:18.428340 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:18.446056 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:24:18.450102 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films__dbt_tmp" rename to "films"
+[0m21:24:18.462288 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:18.486634 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m21:24:18.489161 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:24:18.491418 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m21:24:18.504530 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:24:18.524205 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:24:18.526624 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+drop table if exists "destination_db"."public"."films__dbt_backup" cascade
+[0m21:24:18.571337 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:24:18.576872 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (execute): 2024-03-27 21:24:18.045329 => 2024-03-27 21:24:18.576734
+[0m21:24:18.579306 [debug] [Thread-1 (]: On model.custom_postgres.films: Close
+[0m21:24:18.589261 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b4dbe950>]}
+[0m21:24:18.594542 [info ] [Thread-1 (]: 3 of 4 OK created sql table model public.films ................................. [[32mSELECT 20[0m in 0.62s]
+[0m21:24:18.604135 [debug] [Thread-1 (]: Finished running node model.custom_postgres.films
+[0m21:24:18.611900 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_ratings
+[0m21:24:18.621489 [info ] [Thread-1 (]: 4 of 4 START sql table model public.film_ratings ............................... [RUN]
+[0m21:24:18.628127 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_ratings'
+[0m21:24:18.636154 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_ratings
+[0m21:24:18.647171 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_ratings"
+[0m21:24:18.680380 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (compile): 2024-03-27 21:24:18.638113 => 2024-03-27 21:24:18.680135
+[0m21:24:18.684924 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_ratings
+[0m21:24:18.703390 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_ratings"
+[0m21:24:18.726998 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:24:18.729215 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: BEGIN
+[0m21:24:18.731611 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:24:18.853323 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:24:18.857580 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:24:18.862785 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_ratings__dbt_tmp"
+  as (
+    -- append the films and the actors together to create one table but its going to be primarily focused on the film ratings
+-- create 2 different tables and use a join to merge into one
+
+WITH films_with_ratings AS (
+    SELECT 
+        film_id,
+        title,
+        release_date,
+        price,
+        rating,
+        user_rating,
+        CASE
+            WHEN user_rating >= 4.5 THEN 'Exellent'
+            WHEN user_rating >= 4.0 THEN 'Good'
+            WHEN user_rating >= 3.0 THEN 'Average'
+            ELSE 'Poor'
+        END as rating_category
+    FROM "destination_db"."public"."films"
+),
+
+films_with_actors AS (
+    SELECT
+        f.film_id,
+        f.title,
+        STRING_AGG(a.actor_name, ',') AS actors
+    FROM "destination_db"."public"."films" f
+    LEFT JOIN "destination_db"."public"."film_actors" fa ON f.film_id = fa.film_id
+    LEFT JOIN "destination_db"."public"."actors" a ON fa.actor_id = a.actor_id
+    GROUP BY f.film_id, f.title
+)
+
+-- join the 2 tables above
+SELECT
+    fwf.*,
+    fwa.actors
+FROM films_with_ratings fwf
+LEFT JOIN films_with_actors fwa ON fwf.film_id = fwa.film_id
+  );
+  
+[0m21:24:18.901400 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:24:18.920006 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:24:18.922830 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+alter table "destination_db"."public"."film_ratings__dbt_tmp" rename to "film_ratings"
+[0m21:24:18.932144 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:24:18.941656 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m21:24:18.944355 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:24:18.952324 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m21:24:18.963346 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:24:18.975229 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:24:18.977456 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+drop table if exists "destination_db"."public"."film_ratings__dbt_backup" cascade
+[0m21:24:18.989313 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:24:18.995873 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (execute): 2024-03-27 21:24:18.686933 => 2024-03-27 21:24:18.995727
+[0m21:24:18.998064 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: Close
+[0m21:24:19.004788 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '376fa510-5488-424d-8e15-ba8451679da7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b43efc70>]}
+[0m21:24:19.008029 [info ] [Thread-1 (]: 4 of 4 OK created sql table model public.film_ratings .......................... [[32mSELECT 20[0m in 0.38s]
+[0m21:24:19.015747 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_ratings
+[0m21:24:19.027883 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:24:19.031949 [debug] [MainThread]: Using postgres connection "master"
+[0m21:24:19.041629 [debug] [MainThread]: On master: BEGIN
+[0m21:24:19.052286 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m21:24:19.114034 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:24:19.121868 [debug] [MainThread]: On master: COMMIT
+[0m21:24:19.124052 [debug] [MainThread]: Using postgres connection "master"
+[0m21:24:19.126366 [debug] [MainThread]: On master: COMMIT
+[0m21:24:19.137807 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m21:24:19.140232 [debug] [MainThread]: On master: Close
+[0m21:24:19.144121 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:24:19.147502 [debug] [MainThread]: Connection 'list_destination_db' was properly closed.
+[0m21:24:19.152998 [debug] [MainThread]: Connection 'model.custom_postgres.film_ratings' was properly closed.
+[0m21:24:19.155966 [info ] [MainThread]: 
+[0m21:24:19.159490 [info ] [MainThread]: Finished running 4 table models in 0 hours 0 minutes and 10.91 seconds (10.91s).
+[0m21:24:19.173246 [debug] [MainThread]: Command end result
+[0m21:24:19.303303 [info ] [MainThread]: 
+[0m21:24:19.307059 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:24:19.312518 [info ] [MainThread]: 
+[0m21:24:19.326588 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m21:24:19.338826 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b43d5b70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b43f8f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff1b43f8c10>]}
+[0m21:24:19.345504 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-03-27 21:40:13.503833 | 9b3a67f5-0743-4bab-b0c7-b7decb686acd ==============================
+[0m21:40:13.503833 [info ] [MainThread]: Running with dbt=1.4.7
+[0m21:40:13.518528 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/root', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_dir': '/dbt', 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m21:40:13.522045 [debug] [MainThread]: Tracking: tracking
+[0m21:40:13.615591 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294e1ed0f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294e1ed7b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294e1ed390>]}
+[0m21:40:13.732375 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m21:40:15.402536 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 1 files changed.
+[0m21:40:15.404545 [debug] [MainThread]: Partial parsing: added file: custom_postgres://macros/film_ratings_macros.sql
+[0m21:40:15.406944 [debug] [MainThread]: Partial parsing: updated file: custom_postgres://models/example/film_ratings.sql
+[0m21:40:15.539685 [debug] [MainThread]: 1603: static parser failed on example/film_ratings.sql
+[0m21:40:15.609523 [debug] [MainThread]: 1602: parser fallback to jinja rendering on example/film_ratings.sql
+[0m21:40:16.029158 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294c920df0>]}
+[0m21:40:16.120185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294e1ce6b0>]}
+[0m21:40:16.122863 [info ] [MainThread]: Found 4 models, 19 tests, 0 snapshots, 0 analyses, 292 macros, 0 operations, 0 seed files, 3 sources, 0 exposures, 0 metrics
+[0m21:40:16.129011 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294e1f3bb0>]}
+[0m21:40:16.139624 [info ] [MainThread]: 
+[0m21:40:16.154527 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:40:16.166335 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db'
+[0m21:40:16.225212 [debug] [ThreadPool]: Using postgres connection "list_destination_db"
+[0m21:40:16.232192 [debug] [ThreadPool]: On list_destination_db: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:40:16.234933 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:40:16.823073 [debug] [ThreadPool]: SQL status: SELECT 6 in 1 seconds
+[0m21:40:16.828678 [debug] [ThreadPool]: On list_destination_db: Close
+[0m21:40:16.845755 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db_public'
+[0m21:40:16.877549 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m21:40:16.884463 [debug] [ThreadPool]: On list_destination_db_public: BEGIN
+[0m21:40:16.887330 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:40:16.961531 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[0m21:40:16.969457 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m21:40:16.972175 [debug] [ThreadPool]: On list_destination_db_public: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db_public"} */
+select
+      'destination_db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'destination_db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m21:40:16.994036 [debug] [ThreadPool]: SQL status: SELECT 5 in 0 seconds
+[0m21:40:17.000763 [debug] [ThreadPool]: On list_destination_db_public: ROLLBACK
+[0m21:40:17.009410 [debug] [ThreadPool]: On list_destination_db_public: Close
+[0m21:40:17.041990 [debug] [MainThread]: Using postgres connection "master"
+[0m21:40:17.044386 [debug] [MainThread]: On master: BEGIN
+[0m21:40:17.051559 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:40:17.109805 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:40:17.112453 [debug] [MainThread]: Using postgres connection "master"
+[0m21:40:17.119872 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m21:40:17.155734 [debug] [MainThread]: SQL status: SELECT 0 in 0 seconds
+[0m21:40:17.161817 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f293ff67a90>]}
+[0m21:40:17.169393 [debug] [MainThread]: On master: ROLLBACK
+[0m21:40:17.175216 [debug] [MainThread]: Using postgres connection "master"
+[0m21:40:17.177944 [debug] [MainThread]: On master: BEGIN
+[0m21:40:17.193512 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:40:17.196468 [debug] [MainThread]: On master: COMMIT
+[0m21:40:17.204066 [debug] [MainThread]: Using postgres connection "master"
+[0m21:40:17.206149 [debug] [MainThread]: On master: COMMIT
+[0m21:40:17.212289 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m21:40:17.221666 [debug] [MainThread]: On master: Close
+[0m21:40:17.224875 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m21:40:17.228941 [info ] [MainThread]: 
+[0m21:40:17.298206 [debug] [Thread-1 (]: Began running node model.custom_postgres.actors
+[0m21:40:17.304358 [info ] [Thread-1 (]: 1 of 4 START sql table model public.actors ..................................... [RUN]
+[0m21:40:17.308874 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.actors'
+[0m21:40:17.312134 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.actors
+[0m21:40:17.325896 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.actors"
+[0m21:40:17.358988 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (compile): 2024-03-27 21:40:17.319974 => 2024-03-27 21:40:17.358778
+[0m21:40:17.361281 [debug] [Thread-1 (]: Began executing node model.custom_postgres.actors
+[0m21:40:17.547184 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.actors"
+[0m21:40:17.590241 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:40:17.593044 [debug] [Thread-1 (]: On model.custom_postgres.actors: BEGIN
+[0m21:40:17.595773 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:40:17.693340 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:40:17.708717 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:40:17.711570 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."actors"
+  );
+  
+[0m21:40:17.757929 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:40:17.785832 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:40:17.788457 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors" rename to "actors__dbt_backup"
+[0m21:40:17.796872 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:17.812378 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:40:17.821588 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors__dbt_tmp" rename to "actors"
+[0m21:40:17.827995 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:17.979504 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m21:40:17.988623 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:40:17.990791 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m21:40:18.006163 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:40:18.028034 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:40:18.030346 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+drop table if exists "destination_db"."public"."actors__dbt_backup" cascade
+[0m21:40:18.055626 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:40:18.062477 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (execute): 2024-03-27 21:40:17.363423 => 2024-03-27 21:40:18.062313
+[0m21:40:18.072126 [debug] [Thread-1 (]: On model.custom_postgres.actors: Close
+[0m21:40:18.075770 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f293ff748b0>]}
+[0m21:40:18.079770 [info ] [Thread-1 (]: 1 of 4 OK created sql table model public.actors ................................ [[32mSELECT 20[0m in 0.77s]
+[0m21:40:18.097582 [debug] [Thread-1 (]: Finished running node model.custom_postgres.actors
+[0m21:40:18.107073 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_actors
+[0m21:40:18.109308 [info ] [Thread-1 (]: 2 of 4 START sql table model public.film_actors ................................ [RUN]
+[0m21:40:18.113625 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_actors'
+[0m21:40:18.126016 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_actors
+[0m21:40:18.141813 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_actors"
+[0m21:40:18.171179 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (compile): 2024-03-27 21:40:18.128083 => 2024-03-27 21:40:18.170990
+[0m21:40:18.173543 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_actors
+[0m21:40:18.204406 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_actors"
+[0m21:40:18.230340 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:40:18.238794 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: BEGIN
+[0m21:40:18.243147 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:40:18.309741 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:40:18.312107 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:40:18.319242 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."film_actors"
+  );
+  
+[0m21:40:18.338846 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:40:18.349645 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:40:18.354265 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors" rename to "film_actors__dbt_backup"
+[0m21:40:18.361307 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:18.376660 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:40:18.378983 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors__dbt_tmp" rename to "film_actors"
+[0m21:40:18.390818 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:18.397071 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m21:40:18.404086 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:40:18.407004 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m21:40:18.420045 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:40:18.427066 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:40:18.429926 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+drop table if exists "destination_db"."public"."film_actors__dbt_backup" cascade
+[0m21:40:18.472192 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:40:18.479328 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (execute): 2024-03-27 21:40:18.175414 => 2024-03-27 21:40:18.479196
+[0m21:40:18.488296 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: Close
+[0m21:40:18.492447 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f293fe03df0>]}
+[0m21:40:18.508103 [info ] [Thread-1 (]: 2 of 4 OK created sql table model public.film_actors ........................... [[32mSELECT 20[0m in 0.38s]
+[0m21:40:18.513700 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_actors
+[0m21:40:18.524435 [debug] [Thread-1 (]: Began running node model.custom_postgres.films
+[0m21:40:18.527797 [info ] [Thread-1 (]: 3 of 4 START sql table model public.films ...................................... [RUN]
+[0m21:40:18.541655 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.films'
+[0m21:40:18.544873 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.films
+[0m21:40:18.562360 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.films"
+[0m21:40:18.610271 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (compile): 2024-03-27 21:40:18.551975 => 2024-03-27 21:40:18.610094
+[0m21:40:18.613134 [debug] [Thread-1 (]: Began executing node model.custom_postgres.films
+[0m21:40:18.635175 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.films"
+[0m21:40:18.663494 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:40:18.671443 [debug] [Thread-1 (]: On model.custom_postgres.films: BEGIN
+[0m21:40:18.673785 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:40:18.737545 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:40:18.740566 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:40:18.742764 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+
+  
+    
+
+  create  table "destination_db"."public"."films__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."films"
+  );
+  
+[0m21:40:18.763903 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:40:18.785124 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:40:18.788941 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films" rename to "films__dbt_backup"
+[0m21:40:18.796195 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:18.812326 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:40:18.819888 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films__dbt_tmp" rename to "films"
+[0m21:40:18.826569 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:18.836056 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m21:40:18.839077 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:40:18.841013 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m21:40:18.856125 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:40:18.864252 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:40:18.872718 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+drop table if exists "destination_db"."public"."films__dbt_backup" cascade
+[0m21:40:18.890472 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:40:18.894741 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (execute): 2024-03-27 21:40:18.620585 => 2024-03-27 21:40:18.894580
+[0m21:40:18.902676 [debug] [Thread-1 (]: On model.custom_postgres.films: Close
+[0m21:40:18.906239 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f293fe00cd0>]}
+[0m21:40:18.909827 [info ] [Thread-1 (]: 3 of 4 OK created sql table model public.films ................................. [[32mSELECT 20[0m in 0.37s]
+[0m21:40:18.919954 [debug] [Thread-1 (]: Finished running node model.custom_postgres.films
+[0m21:40:18.925934 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_ratings
+[0m21:40:18.928851 [info ] [Thread-1 (]: 4 of 4 START sql table model public.film_ratings ............................... [RUN]
+[0m21:40:18.940499 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_ratings'
+[0m21:40:18.944206 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_ratings
+[0m21:40:18.960085 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_ratings"
+[0m21:40:18.991634 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (compile): 2024-03-27 21:40:18.952472 => 2024-03-27 21:40:18.991374
+[0m21:40:18.993960 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_ratings
+[0m21:40:19.022387 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_ratings"
+[0m21:40:19.076925 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:40:19.078575 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: BEGIN
+[0m21:40:19.080357 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:40:19.139756 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:40:19.142259 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:40:19.144246 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_ratings__dbt_tmp"
+  as (
+    
+
+-- append the films and the actors together to create one table but its going to be primarily focused on the film ratings
+-- create 2 different tables and use a join to merge into one
+
+WITH films_with_ratings AS (
+    SELECT 
+        film_id,
+        title,
+        release_date,
+        price,
+        rating,
+        user_rating,
+        CASE
+            WHEN user_rating >= 4.5 THEN 'Exellent'
+            WHEN user_rating >= 4.0 THEN 'Good'
+            WHEN user_rating >= 3.0 THEN 'Average'
+            ELSE 'Poor'
+        END as rating_category
+    FROM "destination_db"."public"."films"
+),
+
+films_with_actors AS (
+    SELECT
+        f.film_id,
+        f.title,
+        STRING_AGG(a.actor_name, ',') AS actors
+    FROM "destination_db"."public"."films" f
+    LEFT JOIN "destination_db"."public"."film_actors" fa ON f.film_id = fa.film_id
+    LEFT JOIN "destination_db"."public"."actors" a ON fa.actor_id = a.actor_id
+    GROUP BY f.film_id, f.title
+)
+
+-- join the 2 tables above
+SELECT
+    fwf.*,
+    fwa.actors
+FROM films_with_ratings fwf
+LEFT JOIN films_with_actors fwa ON fwf.film_id = fwa.film_id
+
+
+
+  );
+  
+[0m21:40:19.180583 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:40:19.201525 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:40:19.204929 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+alter table "destination_db"."public"."film_ratings__dbt_tmp" rename to "film_ratings"
+[0m21:40:19.212287 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:40:19.223493 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m21:40:19.225385 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:40:19.227314 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m21:40:19.241832 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:40:19.251366 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:40:19.254745 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+drop table if exists "destination_db"."public"."film_ratings__dbt_backup" cascade
+[0m21:40:19.261338 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:40:19.267784 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (execute): 2024-03-27 21:40:18.996387 => 2024-03-27 21:40:19.267621
+[0m21:40:19.272798 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: Close
+[0m21:40:19.276979 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9b3a67f5-0743-4bab-b0c7-b7decb686acd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294c923bb0>]}
+[0m21:40:19.283668 [info ] [Thread-1 (]: 4 of 4 OK created sql table model public.film_ratings .......................... [[32mSELECT 20[0m in 0.34s]
+[0m21:40:19.289111 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_ratings
+[0m21:40:19.296192 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:40:19.302529 [debug] [MainThread]: Using postgres connection "master"
+[0m21:40:19.305404 [debug] [MainThread]: On master: BEGIN
+[0m21:40:19.307540 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m21:40:19.359848 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:40:19.362853 [debug] [MainThread]: On master: COMMIT
+[0m21:40:19.370233 [debug] [MainThread]: Using postgres connection "master"
+[0m21:40:19.372025 [debug] [MainThread]: On master: COMMIT
+[0m21:40:19.376980 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m21:40:19.378926 [debug] [MainThread]: On master: Close
+[0m21:40:19.388140 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:40:19.390826 [debug] [MainThread]: Connection 'list_destination_db' was properly closed.
+[0m21:40:19.393968 [debug] [MainThread]: Connection 'model.custom_postgres.film_ratings' was properly closed.
+[0m21:40:19.396739 [info ] [MainThread]: 
+[0m21:40:19.405405 [info ] [MainThread]: Finished running 4 table models in 0 hours 0 minutes and 3.25 seconds (3.25s).
+[0m21:40:19.410695 [debug] [MainThread]: Command end result
+[0m21:40:19.463078 [info ] [MainThread]: 
+[0m21:40:19.470623 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:40:19.474931 [info ] [MainThread]: 
+[0m21:40:19.480003 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m21:40:19.488570 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f293fe4bb20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294c923880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f294c923940>]}
+[0m21:40:19.491448 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-03-27 21:47:36.937838 | 368d695b-a04a-47d1-a0b3-010f9dfe1272 ==============================
+[0m21:47:36.937838 [info ] [MainThread]: Running with dbt=1.4.7
+[0m21:47:36.953366 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/root', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_dir': '/dbt', 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m21:47:36.956739 [debug] [MainThread]: Tracking: tracking
+[0m21:47:36.982323 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2c2810f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2c2817b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2c281390>]}
+[0m21:47:37.053557 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m21:47:37.580606 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m21:47:37.582635 [debug] [MainThread]: Partial parsing: added file: custom_postgres://models/example/specific_movie.sql
+[0m21:47:37.664239 [debug] [MainThread]: 1603: static parser failed on example/specific_movie.sql
+[0m21:47:37.725906 [debug] [MainThread]: 1602: parser fallback to jinja rendering on example/specific_movie.sql
+[0m21:47:37.783622 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a82a080>]}
+[0m21:47:37.840902 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a9bc340>]}
+[0m21:47:37.842985 [info ] [MainThread]: Found 5 models, 19 tests, 0 snapshots, 0 analyses, 292 macros, 0 operations, 0 seed files, 3 sources, 0 exposures, 0 metrics
+[0m21:47:37.846104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a9bd330>]}
+[0m21:47:37.855614 [info ] [MainThread]: 
+[0m21:47:37.864424 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:47:37.870238 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db'
+[0m21:47:37.910915 [debug] [ThreadPool]: Using postgres connection "list_destination_db"
+[0m21:47:37.912941 [debug] [ThreadPool]: On list_destination_db: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:47:37.914717 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:47:38.281361 [debug] [ThreadPool]: SQL status: SELECT 6 in 0 seconds
+[0m21:47:38.285853 [debug] [ThreadPool]: On list_destination_db: Close
+[0m21:47:38.294283 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db_public'
+[0m21:47:38.317408 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m21:47:38.319487 [debug] [ThreadPool]: On list_destination_db_public: BEGIN
+[0m21:47:38.324428 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:47:38.371437 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[0m21:47:38.376894 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m21:47:38.378798 [debug] [ThreadPool]: On list_destination_db_public: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db_public"} */
+select
+      'destination_db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'destination_db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m21:47:38.395219 [debug] [ThreadPool]: SQL status: SELECT 5 in 0 seconds
+[0m21:47:38.399693 [debug] [ThreadPool]: On list_destination_db_public: ROLLBACK
+[0m21:47:38.404875 [debug] [ThreadPool]: On list_destination_db_public: Close
+[0m21:47:38.432902 [debug] [MainThread]: Using postgres connection "master"
+[0m21:47:38.434800 [debug] [MainThread]: On master: BEGIN
+[0m21:47:38.436448 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:47:38.481580 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:47:38.484026 [debug] [MainThread]: Using postgres connection "master"
+[0m21:47:38.485850 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m21:47:38.511576 [debug] [MainThread]: SQL status: SELECT 0 in 0 seconds
+[0m21:47:38.516431 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a843d30>]}
+[0m21:47:38.519337 [debug] [MainThread]: On master: ROLLBACK
+[0m21:47:38.527077 [debug] [MainThread]: Using postgres connection "master"
+[0m21:47:38.529296 [debug] [MainThread]: On master: BEGIN
+[0m21:47:38.537474 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:47:38.542417 [debug] [MainThread]: On master: COMMIT
+[0m21:47:38.544668 [debug] [MainThread]: Using postgres connection "master"
+[0m21:47:38.546406 [debug] [MainThread]: On master: COMMIT
+[0m21:47:38.551170 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m21:47:38.553030 [debug] [MainThread]: On master: Close
+[0m21:47:38.556858 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m21:47:38.561463 [info ] [MainThread]: 
+[0m21:47:38.610273 [debug] [Thread-1 (]: Began running node model.custom_postgres.actors
+[0m21:47:38.612386 [info ] [Thread-1 (]: 1 of 5 START sql table model public.actors ..................................... [RUN]
+[0m21:47:38.617282 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.actors'
+[0m21:47:38.619893 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.actors
+[0m21:47:38.632262 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.actors"
+[0m21:47:38.661780 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (compile): 2024-03-27 21:47:38.625939 => 2024-03-27 21:47:38.661488
+[0m21:47:38.664190 [debug] [Thread-1 (]: Began executing node model.custom_postgres.actors
+[0m21:47:38.793153 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.actors"
+[0m21:47:38.824357 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:47:38.827035 [debug] [Thread-1 (]: On model.custom_postgres.actors: BEGIN
+[0m21:47:38.829018 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:47:38.926407 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:47:38.935883 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:47:38.944292 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."actors"
+  );
+  
+[0m21:47:38.978180 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:47:39.018845 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:47:39.021237 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors" rename to "actors__dbt_backup"
+[0m21:47:39.031811 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.065823 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:47:39.068577 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors__dbt_tmp" rename to "actors"
+[0m21:47:39.079480 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.159838 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m21:47:39.161665 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:47:39.163345 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m21:47:39.170391 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:47:39.190697 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m21:47:39.192670 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+drop table if exists "destination_db"."public"."actors__dbt_backup" cascade
+[0m21:47:39.204553 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:47:39.211333 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (execute): 2024-03-27 21:47:38.665960 => 2024-03-27 21:47:39.211202
+[0m21:47:39.215466 [debug] [Thread-1 (]: On model.custom_postgres.actors: Close
+[0m21:47:39.219545 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a8d8e80>]}
+[0m21:47:39.228595 [info ] [Thread-1 (]: 1 of 5 OK created sql table model public.actors ................................ [[32mSELECT 20[0m in 0.60s]
+[0m21:47:39.235890 [debug] [Thread-1 (]: Finished running node model.custom_postgres.actors
+[0m21:47:39.238528 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_actors
+[0m21:47:39.243301 [info ] [Thread-1 (]: 2 of 5 START sql table model public.film_actors ................................ [RUN]
+[0m21:47:39.247287 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_actors'
+[0m21:47:39.249172 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_actors
+[0m21:47:39.260541 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_actors"
+[0m21:47:39.279514 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (compile): 2024-03-27 21:47:39.250827 => 2024-03-27 21:47:39.279331
+[0m21:47:39.281482 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_actors
+[0m21:47:39.295221 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_actors"
+[0m21:47:39.313150 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:47:39.314905 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: BEGIN
+[0m21:47:39.316522 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:47:39.362360 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:47:39.365145 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:47:39.367758 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."film_actors"
+  );
+  
+[0m21:47:39.388219 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:47:39.402114 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:47:39.404636 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors" rename to "film_actors__dbt_backup"
+[0m21:47:39.415442 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.427215 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:47:39.429035 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors__dbt_tmp" rename to "film_actors"
+[0m21:47:39.444100 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.449643 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m21:47:39.451420 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:47:39.453135 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m21:47:39.465469 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:47:39.472813 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m21:47:39.475928 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+drop table if exists "destination_db"."public"."film_actors__dbt_backup" cascade
+[0m21:47:39.487627 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:47:39.495104 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (execute): 2024-03-27 21:47:39.283118 => 2024-03-27 21:47:39.494996
+[0m21:47:39.497311 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: Close
+[0m21:47:39.500707 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a8d9210>]}
+[0m21:47:39.503818 [info ] [Thread-1 (]: 2 of 5 OK created sql table model public.film_actors ........................... [[32mSELECT 20[0m in 0.25s]
+[0m21:47:39.512776 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_actors
+[0m21:47:39.517573 [debug] [Thread-1 (]: Began running node model.custom_postgres.films
+[0m21:47:39.520030 [info ] [Thread-1 (]: 3 of 5 START sql table model public.films ...................................... [RUN]
+[0m21:47:39.524370 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.films'
+[0m21:47:39.527805 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.films
+[0m21:47:39.535602 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.films"
+[0m21:47:39.554975 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (compile): 2024-03-27 21:47:39.530020 => 2024-03-27 21:47:39.554727
+[0m21:47:39.560295 [debug] [Thread-1 (]: Began executing node model.custom_postgres.films
+[0m21:47:39.576046 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.films"
+[0m21:47:39.594813 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:47:39.596520 [debug] [Thread-1 (]: On model.custom_postgres.films: BEGIN
+[0m21:47:39.598135 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:47:39.644606 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:47:39.647644 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:47:39.649907 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+
+  
+    
+
+  create  table "destination_db"."public"."films__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."films"
+  );
+  
+[0m21:47:39.667791 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:47:39.679091 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:47:39.680863 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films" rename to "films__dbt_backup"
+[0m21:47:39.688027 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.700258 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:47:39.702308 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films__dbt_tmp" rename to "films"
+[0m21:47:39.709764 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.716053 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m21:47:39.717780 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:47:39.719348 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m21:47:39.727726 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:47:39.736264 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m21:47:39.738141 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+drop table if exists "destination_db"."public"."films__dbt_backup" cascade
+[0m21:47:39.754409 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:47:39.759641 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (execute): 2024-03-27 21:47:39.562084 => 2024-03-27 21:47:39.759428
+[0m21:47:39.761933 [debug] [Thread-1 (]: On model.custom_postgres.films: Close
+[0m21:47:39.765773 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a752b90>]}
+[0m21:47:39.769201 [info ] [Thread-1 (]: 3 of 5 OK created sql table model public.films ................................. [[32mSELECT 20[0m in 0.24s]
+[0m21:47:39.774318 [debug] [Thread-1 (]: Finished running node model.custom_postgres.films
+[0m21:47:39.784303 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_ratings
+[0m21:47:39.786258 [info ] [Thread-1 (]: 4 of 5 START sql table model public.film_ratings ............................... [RUN]
+[0m21:47:39.790303 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_ratings'
+[0m21:47:39.797066 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_ratings
+[0m21:47:39.812957 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_ratings"
+[0m21:47:39.830769 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (compile): 2024-03-27 21:47:39.798868 => 2024-03-27 21:47:39.830572
+[0m21:47:39.832536 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_ratings
+[0m21:47:39.845741 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_ratings"
+[0m21:47:39.864111 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:47:39.865753 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: BEGIN
+[0m21:47:39.867384 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:47:39.908084 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:47:39.913960 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:47:39.916387 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_ratings__dbt_tmp"
+  as (
+    
+
+-- append the films and the actors together to create one table but its going to be primarily focused on the film ratings
+-- create 2 different tables and use a join to merge into one
+
+WITH films_with_ratings AS (
+    SELECT 
+        film_id,
+        title,
+        release_date,
+        price,
+        rating,
+        user_rating,
+        CASE
+            WHEN user_rating >= 4.5 THEN 'Exellent'
+            WHEN user_rating >= 4.0 THEN 'Good'
+            WHEN user_rating >= 3.0 THEN 'Average'
+            ELSE 'Poor'
+        END as rating_category
+    FROM "destination_db"."public"."films"
+),
+
+films_with_actors AS (
+    SELECT
+        f.film_id,
+        f.title,
+        STRING_AGG(a.actor_name, ',') AS actors
+    FROM "destination_db"."public"."films" f
+    LEFT JOIN "destination_db"."public"."film_actors" fa ON f.film_id = fa.film_id
+    LEFT JOIN "destination_db"."public"."actors" a ON fa.actor_id = a.actor_id
+    GROUP BY f.film_id, f.title
+)
+
+-- join the 2 tables above
+SELECT
+    fwf.*,
+    fwa.actors
+FROM films_with_ratings fwf
+LEFT JOIN films_with_actors fwa ON fwf.film_id = fwa.film_id
+
+
+
+  );
+  
+[0m21:47:39.952155 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m21:47:39.963745 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:47:39.965774 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+alter table "destination_db"."public"."film_ratings__dbt_tmp" rename to "film_ratings"
+[0m21:47:39.972037 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:39.980700 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m21:47:39.983626 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:47:39.985657 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m21:47:40.002354 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:47:40.012964 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m21:47:40.018965 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+drop table if exists "destination_db"."public"."film_ratings__dbt_backup" cascade
+[0m21:47:40.025621 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:47:40.035904 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (execute): 2024-03-27 21:47:39.834226 => 2024-03-27 21:47:40.035701
+[0m21:47:40.037982 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: Close
+[0m21:47:40.041785 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a979780>]}
+[0m21:47:40.053865 [info ] [Thread-1 (]: 4 of 5 OK created sql table model public.film_ratings .......................... [[32mSELECT 20[0m in 0.25s]
+[0m21:47:40.058514 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_ratings
+[0m21:47:40.066924 [debug] [Thread-1 (]: Began running node model.custom_postgres.specific_movie
+[0m21:47:40.069427 [info ] [Thread-1 (]: 5 of 5 START sql table model public.specific_movie ............................. [RUN]
+[0m21:47:40.074118 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.specific_movie'
+[0m21:47:40.078869 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.specific_movie
+[0m21:47:40.087856 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.specific_movie"
+[0m21:47:40.108236 [debug] [Thread-1 (]: Timing info for model.custom_postgres.specific_movie (compile): 2024-03-27 21:47:40.081428 => 2024-03-27 21:47:40.108065
+[0m21:47:40.112814 [debug] [Thread-1 (]: Began executing node model.custom_postgres.specific_movie
+[0m21:47:40.126268 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.specific_movie"
+[0m21:47:40.146857 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m21:47:40.148640 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: BEGIN
+[0m21:47:40.150396 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:47:40.200582 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m21:47:40.202969 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m21:47:40.205318 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+
+  
+    
+
+  create  table "destination_db"."public"."specific_movie__dbt_tmp"
+  as (
+    
+
+SELECT * 
+FROM "destination_db"."public"."films"
+WHERE title = 'Dunkirk'
+  );
+  
+[0m21:47:40.221406 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0 seconds
+[0m21:47:40.230977 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m21:47:40.233527 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+alter table "destination_db"."public"."specific_movie__dbt_tmp" rename to "specific_movie"
+[0m21:47:40.242255 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m21:47:40.251799 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: COMMIT
+[0m21:47:40.253762 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m21:47:40.255527 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: COMMIT
+[0m21:47:40.266337 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m21:47:40.272585 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m21:47:40.274375 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+drop table if exists "destination_db"."public"."specific_movie__dbt_backup" cascade
+[0m21:47:40.282932 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m21:47:40.287184 [debug] [Thread-1 (]: Timing info for model.custom_postgres.specific_movie (execute): 2024-03-27 21:47:40.114886 => 2024-03-27 21:47:40.287069
+[0m21:47:40.288846 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: Close
+[0m21:47:40.292117 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '368d695b-a04a-47d1-a0b3-010f9dfe1272', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a781810>]}
+[0m21:47:40.299539 [info ] [Thread-1 (]: 5 of 5 OK created sql table model public.specific_movie ........................ [[32mSELECT 1[0m in 0.22s]
+[0m21:47:40.303031 [debug] [Thread-1 (]: Finished running node model.custom_postgres.specific_movie
+[0m21:47:40.312374 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:47:40.317674 [debug] [MainThread]: Using postgres connection "master"
+[0m21:47:40.319958 [debug] [MainThread]: On master: BEGIN
+[0m21:47:40.322153 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m21:47:40.369305 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m21:47:40.371767 [debug] [MainThread]: On master: COMMIT
+[0m21:47:40.373954 [debug] [MainThread]: Using postgres connection "master"
+[0m21:47:40.375773 [debug] [MainThread]: On master: COMMIT
+[0m21:47:40.383872 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m21:47:40.386387 [debug] [MainThread]: On master: Close
+[0m21:47:40.389618 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:47:40.392284 [debug] [MainThread]: Connection 'model.custom_postgres.specific_movie' was properly closed.
+[0m21:47:40.398716 [info ] [MainThread]: 
+[0m21:47:40.402895 [info ] [MainThread]: Finished running 5 table models in 0 hours 0 minutes and 2.54 seconds (2.54s).
+[0m21:47:40.407275 [debug] [MainThread]: Command end result
+[0m21:47:40.453156 [info ] [MainThread]: 
+[0m21:47:40.456035 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:47:40.460291 [info ] [MainThread]: 
+[0m21:47:40.465086 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m21:47:40.469450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a78d2d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a780b20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4b2a782470>]}
+[0m21:47:40.471983 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-03-28 17:06:19.915234 | 18504f33-947f-4b19-abe5-d29723249b5f ==============================
+[0m17:06:19.915234 [info ] [MainThread]: Running with dbt=1.4.7
+[0m17:06:19.950601 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/root', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_dir': '/dbt', 'full_refresh': True, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m17:06:19.954066 [debug] [MainThread]: Tracking: tracking
+[0m17:06:20.089290 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff956469360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff9564697e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff9564693c0>]}
+[0m17:06:20.195375 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m17:06:21.011292 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:06:21.014398 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:06:21.056852 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954ba10c0>]}
+[0m17:06:21.175171 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954cde680>]}
+[0m17:06:21.178287 [info ] [MainThread]: Found 5 models, 19 tests, 0 snapshots, 0 analyses, 292 macros, 0 operations, 0 seed files, 3 sources, 0 exposures, 0 metrics
+[0m17:06:21.204575 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954cde6e0>]}
+[0m17:06:21.250269 [info ] [MainThread]: 
+[0m17:06:21.285871 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:06:21.291799 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db'
+[0m17:06:21.907785 [debug] [ThreadPool]: Using postgres connection "list_destination_db"
+[0m17:06:21.930947 [debug] [ThreadPool]: On list_destination_db: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m17:06:21.940390 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:06:23.363435 [debug] [ThreadPool]: SQL status: SELECT 4 in 1 seconds
+[0m17:06:23.369550 [debug] [ThreadPool]: On list_destination_db: Close
+[0m17:06:23.383041 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db_public'
+[0m17:06:23.421441 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m17:06:23.428382 [debug] [ThreadPool]: On list_destination_db_public: BEGIN
+[0m17:06:23.433156 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:06:23.522095 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[0m17:06:23.526374 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m17:06:23.529791 [debug] [ThreadPool]: On list_destination_db_public: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db_public"} */
+select
+      'destination_db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'destination_db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m17:06:23.594150 [debug] [ThreadPool]: SQL status: SELECT 5 in 0 seconds
+[0m17:06:23.599797 [debug] [ThreadPool]: On list_destination_db_public: ROLLBACK
+[0m17:06:23.609214 [debug] [ThreadPool]: On list_destination_db_public: Close
+[0m17:06:23.639564 [debug] [MainThread]: Using postgres connection "master"
+[0m17:06:23.642296 [debug] [MainThread]: On master: BEGIN
+[0m17:06:23.644499 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:06:23.748258 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m17:06:23.750954 [debug] [MainThread]: Using postgres connection "master"
+[0m17:06:23.753776 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m17:06:24.905377 [debug] [MainThread]: SQL status: SELECT 0 in 1 seconds
+[0m17:06:24.911432 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954be5420>]}
+[0m17:06:24.915770 [debug] [MainThread]: On master: ROLLBACK
+[0m17:06:24.926695 [debug] [MainThread]: Using postgres connection "master"
+[0m17:06:24.929329 [debug] [MainThread]: On master: BEGIN
+[0m17:06:24.944514 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m17:06:24.947671 [debug] [MainThread]: On master: COMMIT
+[0m17:06:24.950875 [debug] [MainThread]: Using postgres connection "master"
+[0m17:06:24.953330 [debug] [MainThread]: On master: COMMIT
+[0m17:06:24.960693 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m17:06:24.963440 [debug] [MainThread]: On master: Close
+[0m17:06:24.967699 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m17:06:24.972322 [info ] [MainThread]: 
+[0m17:06:25.061209 [debug] [Thread-1 (]: Began running node model.custom_postgres.actors
+[0m17:06:25.066675 [info ] [Thread-1 (]: 1 of 5 START sql table model public.actors ..................................... [RUN]
+[0m17:06:25.076524 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.actors'
+[0m17:06:25.080191 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.actors
+[0m17:06:25.093614 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.actors"
+[0m17:06:25.133786 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (compile): 2024-03-28 17:06:25.083423 => 2024-03-28 17:06:25.133472
+[0m17:06:25.137349 [debug] [Thread-1 (]: Began executing node model.custom_postgres.actors
+[0m17:06:25.296815 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.actors"
+[0m17:06:25.412256 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:06:25.415198 [debug] [Thread-1 (]: On model.custom_postgres.actors: BEGIN
+[0m17:06:25.417511 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:06:25.647373 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:06:25.655951 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:06:25.661406 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."actors"
+  );
+  
+[0m17:06:25.762108 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:06:25.811345 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:06:25.813739 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors" rename to "actors__dbt_backup"
+[0m17:06:25.831158 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:25.845088 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:06:25.847393 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors__dbt_tmp" rename to "actors"
+[0m17:06:25.857075 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:26.011093 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m17:06:26.014156 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:06:26.016988 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m17:06:26.028702 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:06:26.057440 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:06:26.060002 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+drop table if exists "destination_db"."public"."actors__dbt_backup" cascade
+[0m17:06:26.116287 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:06:26.122988 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (execute): 2024-03-28 17:06:25.141087 => 2024-03-28 17:06:26.122865
+[0m17:06:26.126732 [debug] [Thread-1 (]: On model.custom_postgres.actors: Close
+[0m17:06:26.131886 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954a5cf70>]}
+[0m17:06:26.138510 [info ] [Thread-1 (]: 1 of 5 OK created sql table model public.actors ................................ [[32mSELECT 20[0m in 1.06s]
+[0m17:06:26.147441 [debug] [Thread-1 (]: Finished running node model.custom_postgres.actors
+[0m17:06:26.151357 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_actors
+[0m17:06:26.154056 [info ] [Thread-1 (]: 2 of 5 START sql table model public.film_actors ................................ [RUN]
+[0m17:06:26.159647 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_actors'
+[0m17:06:26.161981 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_actors
+[0m17:06:26.175408 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_actors"
+[0m17:06:26.199024 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (compile): 2024-03-28 17:06:26.164528 => 2024-03-28 17:06:26.198642
+[0m17:06:26.202906 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_actors
+[0m17:06:26.234394 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_actors"
+[0m17:06:26.256752 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:06:26.258707 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: BEGIN
+[0m17:06:26.262464 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:06:26.348213 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:06:26.350277 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:06:26.352543 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."film_actors"
+  );
+  
+[0m17:06:26.385723 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:06:26.398264 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:06:26.400260 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors" rename to "film_actors__dbt_backup"
+[0m17:06:26.409331 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:26.423660 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:06:26.426988 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors__dbt_tmp" rename to "film_actors"
+[0m17:06:26.435006 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:26.442364 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m17:06:26.445113 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:06:26.447488 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m17:06:26.459176 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:06:26.471936 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:06:26.473719 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+drop table if exists "destination_db"."public"."film_actors__dbt_backup" cascade
+[0m17:06:26.498350 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:06:26.513029 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (execute): 2024-03-28 17:06:26.204717 => 2024-03-28 17:06:26.512388
+[0m17:06:26.526627 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: Close
+[0m17:06:26.532217 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954ad4670>]}
+[0m17:06:26.535436 [info ] [Thread-1 (]: 2 of 5 OK created sql table model public.film_actors ........................... [[32mSELECT 20[0m in 0.37s]
+[0m17:06:26.539108 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_actors
+[0m17:06:26.542656 [debug] [Thread-1 (]: Began running node model.custom_postgres.films
+[0m17:06:26.547693 [info ] [Thread-1 (]: 3 of 5 START sql table model public.films ...................................... [RUN]
+[0m17:06:26.551513 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.films'
+[0m17:06:26.553853 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.films
+[0m17:06:26.561625 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.films"
+[0m17:06:26.581619 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (compile): 2024-03-28 17:06:26.555845 => 2024-03-28 17:06:26.581358
+[0m17:06:26.584217 [debug] [Thread-1 (]: Began executing node model.custom_postgres.films
+[0m17:06:26.599097 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.films"
+[0m17:06:26.614219 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:06:26.615885 [debug] [Thread-1 (]: On model.custom_postgres.films: BEGIN
+[0m17:06:26.617927 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:06:26.667921 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:06:26.669783 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:06:26.671545 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+
+  
+    
+
+  create  table "destination_db"."public"."films__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."films"
+  );
+  
+[0m17:06:26.683075 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:06:26.691133 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:06:26.692951 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films" rename to "films__dbt_backup"
+[0m17:06:26.702410 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:26.711218 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:06:26.713759 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films__dbt_tmp" rename to "films"
+[0m17:06:26.722381 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:26.730818 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m17:06:26.733217 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:06:26.735732 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m17:06:26.745602 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:06:26.755228 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:06:26.757795 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+drop table if exists "destination_db"."public"."films__dbt_backup" cascade
+[0m17:06:26.773698 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:06:26.779540 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (execute): 2024-03-28 17:06:26.586294 => 2024-03-28 17:06:26.779382
+[0m17:06:26.782075 [debug] [Thread-1 (]: On model.custom_postgres.films: Close
+[0m17:06:26.786259 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954ac3df0>]}
+[0m17:06:26.790416 [info ] [Thread-1 (]: 3 of 5 OK created sql table model public.films ................................. [[32mSELECT 20[0m in 0.23s]
+[0m17:06:26.796796 [debug] [Thread-1 (]: Finished running node model.custom_postgres.films
+[0m17:06:26.802703 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_ratings
+[0m17:06:26.805245 [info ] [Thread-1 (]: 4 of 5 START sql table model public.film_ratings ............................... [RUN]
+[0m17:06:26.810106 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_ratings'
+[0m17:06:26.812107 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_ratings
+[0m17:06:26.825118 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_ratings"
+[0m17:06:26.848272 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (compile): 2024-03-28 17:06:26.813777 => 2024-03-28 17:06:26.848087
+[0m17:06:26.850472 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_ratings
+[0m17:06:26.861635 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_ratings"
+[0m17:06:26.877708 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:06:26.879481 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: BEGIN
+[0m17:06:26.881286 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:06:26.934013 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:06:26.936817 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:06:26.938994 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_ratings__dbt_tmp"
+  as (
+    
+
+-- append the films and the actors together to create one table but its going to be primarily focused on the film ratings
+-- create 2 different tables and use a join to merge into one
+
+WITH films_with_ratings AS (
+    SELECT 
+        film_id,
+        title,
+        release_date,
+        price,
+        rating,
+        user_rating,
+        CASE
+            WHEN user_rating >= 4.5 THEN 'Exellent'
+            WHEN user_rating >= 4.0 THEN 'Good'
+            WHEN user_rating >= 3.0 THEN 'Average'
+            ELSE 'Poor'
+        END as rating_category
+    FROM "destination_db"."public"."films"
+),
+
+films_with_actors AS (
+    SELECT
+        f.film_id,
+        f.title,
+        STRING_AGG(a.actor_name, ',') AS actors
+    FROM "destination_db"."public"."films" f
+    LEFT JOIN "destination_db"."public"."film_actors" fa ON f.film_id = fa.film_id
+    LEFT JOIN "destination_db"."public"."actors" a ON fa.actor_id = a.actor_id
+    GROUP BY f.film_id, f.title
+)
+
+-- join the 2 tables above
+SELECT
+    fwf.*,
+    fwa.actors
+FROM films_with_ratings fwf
+LEFT JOIN films_with_actors fwa ON fwf.film_id = fwa.film_id
+
+
+
+  );
+  
+[0m17:06:26.985151 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:06:27.004034 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:06:27.007399 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+alter table "destination_db"."public"."film_ratings__dbt_tmp" rename to "film_ratings"
+[0m17:06:27.016139 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:27.022767 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m17:06:27.024879 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:06:27.026663 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m17:06:27.048407 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:06:27.062559 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:06:27.065048 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+drop table if exists "destination_db"."public"."film_ratings__dbt_backup" cascade
+[0m17:06:27.073794 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:06:27.079472 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (execute): 2024-03-28 17:06:26.852089 => 2024-03-28 17:06:27.079319
+[0m17:06:27.081780 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: Close
+[0m17:06:27.090735 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff9540e9ae0>]}
+[0m17:06:27.093997 [info ] [Thread-1 (]: 4 of 5 OK created sql table model public.film_ratings .......................... [[32mSELECT 20[0m in 0.28s]
+[0m17:06:27.103578 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_ratings
+[0m17:06:27.109457 [debug] [Thread-1 (]: Began running node model.custom_postgres.specific_movie
+[0m17:06:27.112544 [info ] [Thread-1 (]: 5 of 5 START sql table model public.specific_movie ............................. [RUN]
+[0m17:06:27.118566 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.specific_movie'
+[0m17:06:27.122722 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.specific_movie
+[0m17:06:27.136839 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.specific_movie"
+[0m17:06:27.159526 [debug] [Thread-1 (]: Timing info for model.custom_postgres.specific_movie (compile): 2024-03-28 17:06:27.127735 => 2024-03-28 17:06:27.159228
+[0m17:06:27.162803 [debug] [Thread-1 (]: Began executing node model.custom_postgres.specific_movie
+[0m17:06:27.179870 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.specific_movie"
+[0m17:06:27.205164 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:06:27.207756 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: BEGIN
+[0m17:06:27.210716 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:06:27.279367 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:06:27.282252 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:06:27.287269 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+
+  
+    
+
+  create  table "destination_db"."public"."specific_movie__dbt_tmp"
+  as (
+    
+
+SELECT * 
+FROM "destination_db"."public"."films"
+WHERE title = 'Dunkirk'
+  );
+  
+[0m17:06:27.325613 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0 seconds
+[0m17:06:27.337335 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:06:27.339250 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+alter table "destination_db"."public"."specific_movie__dbt_tmp" rename to "specific_movie"
+[0m17:06:27.345673 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:06:27.353950 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: COMMIT
+[0m17:06:27.355782 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:06:27.357343 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: COMMIT
+[0m17:06:27.366786 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:06:27.373512 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:06:27.375445 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+drop table if exists "destination_db"."public"."specific_movie__dbt_backup" cascade
+[0m17:06:27.382498 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:06:27.386791 [debug] [Thread-1 (]: Timing info for model.custom_postgres.specific_movie (execute): 2024-03-28 17:06:27.165138 => 2024-03-28 17:06:27.386684
+[0m17:06:27.389407 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: Close
+[0m17:06:27.392553 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '18504f33-947f-4b19-abe5-d29723249b5f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff9540eabc0>]}
+[0m17:06:27.396066 [info ] [Thread-1 (]: 5 of 5 OK created sql table model public.specific_movie ........................ [[32mSELECT 1[0m in 0.28s]
+[0m17:06:27.400351 [debug] [Thread-1 (]: Finished running node model.custom_postgres.specific_movie
+[0m17:06:27.406538 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:06:27.408786 [debug] [MainThread]: Using postgres connection "master"
+[0m17:06:27.410519 [debug] [MainThread]: On master: BEGIN
+[0m17:06:27.412333 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:06:27.463730 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m17:06:27.465818 [debug] [MainThread]: On master: COMMIT
+[0m17:06:27.467601 [debug] [MainThread]: Using postgres connection "master"
+[0m17:06:27.469556 [debug] [MainThread]: On master: COMMIT
+[0m17:06:27.477425 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m17:06:27.479912 [debug] [MainThread]: On master: Close
+[0m17:06:27.483831 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:06:27.486418 [debug] [MainThread]: Connection 'list_destination_db' was properly closed.
+[0m17:06:27.489036 [debug] [MainThread]: Connection 'model.custom_postgres.specific_movie' was properly closed.
+[0m17:06:27.492057 [info ] [MainThread]: 
+[0m17:06:27.494932 [info ] [MainThread]: Finished running 5 table models in 0 hours 0 minutes and 6.24 seconds (6.24s).
+[0m17:06:27.498472 [debug] [MainThread]: Command end result
+[0m17:06:27.539962 [info ] [MainThread]: 
+[0m17:06:27.542556 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:06:27.546007 [info ] [MainThread]: 
+[0m17:06:27.549409 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m17:06:27.552471 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff954bf0880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff9540e8c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff9540ea950>]}
+[0m17:06:27.554485 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2024-03-28 17:07:19.242846 | c21aea46-739f-4d95-9ca5-7126fa13cdef ==============================
+[0m17:07:19.242846 [info ] [MainThread]: Running with dbt=1.4.7
+[0m17:07:19.258852 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/root', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_dir': '/dbt', 'full_refresh': True, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m17:07:19.261527 [debug] [MainThread]: Tracking: tracking
+[0m17:07:19.278673 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5201a25360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5201a257e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5201a253c0>]}
+[0m17:07:19.324210 [debug] [MainThread]: checksum: f4f4cdde9b257b3a8e3791263c44f34b0bd0facc33ef1ba84a563bd63785ce73, vars: {}, profile: None, target: None, version: 1.4.7
+[0m17:07:19.818128 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:07:19.820245 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:07:19.956765 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f520016d0c0>]}
+[0m17:07:20.027643 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f52000a6680>]}
+[0m17:07:20.030231 [info ] [MainThread]: Found 5 models, 19 tests, 0 snapshots, 0 analyses, 292 macros, 0 operations, 0 seed files, 3 sources, 0 exposures, 0 metrics
+[0m17:07:20.033525 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f52000a66e0>]}
+[0m17:07:20.041723 [info ] [MainThread]: 
+[0m17:07:20.048963 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:07:20.053933 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db'
+[0m17:07:20.091900 [debug] [ThreadPool]: Using postgres connection "list_destination_db"
+[0m17:07:20.094044 [debug] [ThreadPool]: On list_destination_db: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m17:07:20.096349 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:07:20.349797 [debug] [ThreadPool]: SQL status: SELECT 4 in 0 seconds
+[0m17:07:20.359705 [debug] [ThreadPool]: On list_destination_db: Close
+[0m17:07:20.370641 [debug] [ThreadPool]: Acquiring new postgres connection 'list_destination_db_public'
+[0m17:07:20.402702 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m17:07:20.405206 [debug] [ThreadPool]: On list_destination_db_public: BEGIN
+[0m17:07:20.407501 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:07:20.471583 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[0m17:07:20.477526 [debug] [ThreadPool]: Using postgres connection "list_destination_db_public"
+[0m17:07:20.480728 [debug] [ThreadPool]: On list_destination_db_public: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "list_destination_db_public"} */
+select
+      'destination_db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'destination_db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m17:07:20.504461 [debug] [ThreadPool]: SQL status: SELECT 7 in 0 seconds
+[0m17:07:20.510776 [debug] [ThreadPool]: On list_destination_db_public: ROLLBACK
+[0m17:07:20.517575 [debug] [ThreadPool]: On list_destination_db_public: Close
+[0m17:07:20.550430 [debug] [MainThread]: Using postgres connection "master"
+[0m17:07:20.552648 [debug] [MainThread]: On master: BEGIN
+[0m17:07:20.555013 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:07:20.620646 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m17:07:20.623224 [debug] [MainThread]: Using postgres connection "master"
+[0m17:07:20.625974 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m17:07:20.652970 [debug] [MainThread]: SQL status: SELECT 0 in 0 seconds
+[0m17:07:20.657465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51fffa12a0>]}
+[0m17:07:20.660735 [debug] [MainThread]: On master: ROLLBACK
+[0m17:07:20.666478 [debug] [MainThread]: Using postgres connection "master"
+[0m17:07:20.669223 [debug] [MainThread]: On master: BEGIN
+[0m17:07:20.679663 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m17:07:20.684407 [debug] [MainThread]: On master: COMMIT
+[0m17:07:20.688923 [debug] [MainThread]: Using postgres connection "master"
+[0m17:07:20.694905 [debug] [MainThread]: On master: COMMIT
+[0m17:07:20.703079 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m17:07:20.706309 [debug] [MainThread]: On master: Close
+[0m17:07:20.712475 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m17:07:20.719024 [info ] [MainThread]: 
+[0m17:07:20.850652 [debug] [Thread-1 (]: Began running node model.custom_postgres.actors
+[0m17:07:20.854070 [info ] [Thread-1 (]: 1 of 5 START sql table model public.actors ..................................... [RUN]
+[0m17:07:20.860733 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.actors'
+[0m17:07:20.863221 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.actors
+[0m17:07:20.876551 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.actors"
+[0m17:07:20.956748 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (compile): 2024-03-28 17:07:20.865522 => 2024-03-28 17:07:20.956478
+[0m17:07:20.960071 [debug] [Thread-1 (]: Began executing node model.custom_postgres.actors
+[0m17:07:21.695536 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.actors"
+[0m17:07:21.888102 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:07:21.910861 [debug] [Thread-1 (]: On model.custom_postgres.actors: BEGIN
+[0m17:07:21.950377 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:07:22.164276 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:07:22.167908 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:07:22.170011 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."actors"
+  );
+  
+[0m17:07:22.200245 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:07:22.234059 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:07:22.236325 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors" rename to "actors__dbt_backup"
+[0m17:07:22.248311 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:22.262311 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:07:22.264747 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+alter table "destination_db"."public"."actors__dbt_tmp" rename to "actors"
+[0m17:07:22.274701 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:22.404009 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m17:07:22.411682 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:07:22.415591 [debug] [Thread-1 (]: On model.custom_postgres.actors: COMMIT
+[0m17:07:22.432962 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:07:22.453094 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.actors"
+[0m17:07:22.458575 [debug] [Thread-1 (]: On model.custom_postgres.actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.actors"} */
+drop table if exists "destination_db"."public"."actors__dbt_backup" cascade
+[0m17:07:22.531080 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:07:22.537459 [debug] [Thread-1 (]: Timing info for model.custom_postgres.actors (execute): 2024-03-28 17:07:20.962139 => 2024-03-28 17:07:22.537281
+[0m17:07:22.542887 [debug] [Thread-1 (]: On model.custom_postgres.actors: Close
+[0m17:07:22.551032 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5200020c40>]}
+[0m17:07:22.556194 [info ] [Thread-1 (]: 1 of 5 OK created sql table model public.actors ................................ [[32mSELECT 20[0m in 1.69s]
+[0m17:07:22.570004 [debug] [Thread-1 (]: Finished running node model.custom_postgres.actors
+[0m17:07:22.579547 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_actors
+[0m17:07:22.582946 [info ] [Thread-1 (]: 2 of 5 START sql table model public.film_actors ................................ [RUN]
+[0m17:07:22.589494 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_actors'
+[0m17:07:22.595375 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_actors
+[0m17:07:22.604745 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_actors"
+[0m17:07:22.632718 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (compile): 2024-03-28 17:07:22.597687 => 2024-03-28 17:07:22.632483
+[0m17:07:22.635227 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_actors
+[0m17:07:22.656352 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_actors"
+[0m17:07:22.696011 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:07:22.703806 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: BEGIN
+[0m17:07:22.710356 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:07:22.833714 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:07:22.836654 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:07:22.844268 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_actors__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."film_actors"
+  );
+  
+[0m17:07:22.861822 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:07:22.880954 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:07:22.884416 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors" rename to "film_actors__dbt_backup"
+[0m17:07:22.900053 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:22.921801 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:07:22.936032 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+alter table "destination_db"."public"."film_actors__dbt_tmp" rename to "film_actors"
+[0m17:07:22.977202 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:22.993104 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m17:07:22.996126 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:07:23.003794 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: COMMIT
+[0m17:07:23.155126 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:07:23.219553 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_actors"
+[0m17:07:23.225126 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_actors"} */
+drop table if exists "destination_db"."public"."film_actors__dbt_backup" cascade
+[0m17:07:23.241167 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:07:23.249088 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_actors (execute): 2024-03-28 17:07:22.637496 => 2024-03-28 17:07:23.248755
+[0m17:07:23.257272 [debug] [Thread-1 (]: On model.custom_postgres.film_actors: Close
+[0m17:07:23.291529 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51fde782e0>]}
+[0m17:07:23.302617 [info ] [Thread-1 (]: 2 of 5 OK created sql table model public.film_actors ........................... [[32mSELECT 20[0m in 0.68s]
+[0m17:07:23.310488 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_actors
+[0m17:07:23.319983 [debug] [Thread-1 (]: Began running node model.custom_postgres.films
+[0m17:07:23.323832 [info ] [Thread-1 (]: 3 of 5 START sql table model public.films ...................................... [RUN]
+[0m17:07:23.330887 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.films'
+[0m17:07:23.334910 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.films
+[0m17:07:23.360130 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.films"
+[0m17:07:23.389976 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (compile): 2024-03-28 17:07:23.337536 => 2024-03-28 17:07:23.389691
+[0m17:07:23.394242 [debug] [Thread-1 (]: Began executing node model.custom_postgres.films
+[0m17:07:23.416806 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.films"
+[0m17:07:23.440503 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:07:23.442721 [debug] [Thread-1 (]: On model.custom_postgres.films: BEGIN
+[0m17:07:23.445604 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:07:23.548932 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:07:23.550970 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:07:23.552726 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+
+  
+    
+
+  create  table "destination_db"."public"."films__dbt_tmp"
+  as (
+    SELECT * FROM "destination_db"."public"."films"
+  );
+  
+[0m17:07:23.573379 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:07:23.582080 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:07:23.584745 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films" rename to "films__dbt_backup"
+[0m17:07:23.596096 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:23.605013 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:07:23.609002 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+alter table "destination_db"."public"."films__dbt_tmp" rename to "films"
+[0m17:07:23.615602 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:23.624103 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m17:07:23.625953 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:07:23.627695 [debug] [Thread-1 (]: On model.custom_postgres.films: COMMIT
+[0m17:07:23.637188 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:07:23.645331 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.films"
+[0m17:07:23.647186 [debug] [Thread-1 (]: On model.custom_postgres.films: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.films"} */
+drop table if exists "destination_db"."public"."films__dbt_backup" cascade
+[0m17:07:23.655773 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:07:23.659802 [debug] [Thread-1 (]: Timing info for model.custom_postgres.films (execute): 2024-03-28 17:07:23.396930 => 2024-03-28 17:07:23.659699
+[0m17:07:23.661810 [debug] [Thread-1 (]: On model.custom_postgres.films: Close
+[0m17:07:23.666215 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f52000329e0>]}
+[0m17:07:23.676252 [info ] [Thread-1 (]: 3 of 5 OK created sql table model public.films ................................. [[32mSELECT 20[0m in 0.34s]
+[0m17:07:23.680176 [debug] [Thread-1 (]: Finished running node model.custom_postgres.films
+[0m17:07:23.686758 [debug] [Thread-1 (]: Began running node model.custom_postgres.film_ratings
+[0m17:07:23.688920 [info ] [Thread-1 (]: 4 of 5 START sql table model public.film_ratings ............................... [RUN]
+[0m17:07:23.692535 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.film_ratings'
+[0m17:07:23.694614 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.film_ratings
+[0m17:07:23.710415 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.film_ratings"
+[0m17:07:23.731721 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (compile): 2024-03-28 17:07:23.696648 => 2024-03-28 17:07:23.731536
+[0m17:07:23.733692 [debug] [Thread-1 (]: Began executing node model.custom_postgres.film_ratings
+[0m17:07:23.748371 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.film_ratings"
+[0m17:07:23.765955 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:07:23.767673 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: BEGIN
+[0m17:07:23.769422 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:07:23.821289 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:07:23.824161 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:07:23.827444 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+
+  
+    
+
+  create  table "destination_db"."public"."film_ratings__dbt_tmp"
+  as (
+    
+
+-- append the films and the actors together to create one table but its going to be primarily focused on the film ratings
+-- create 2 different tables and use a join to merge into one
+
+WITH films_with_ratings AS (
+    SELECT 
+        film_id,
+        title,
+        release_date,
+        price,
+        rating,
+        user_rating,
+        CASE
+            WHEN user_rating >= 4.5 THEN 'Exellent'
+            WHEN user_rating >= 4.0 THEN 'Good'
+            WHEN user_rating >= 3.0 THEN 'Average'
+            ELSE 'Poor'
+        END as rating_category
+    FROM "destination_db"."public"."films"
+),
+
+films_with_actors AS (
+    SELECT
+        f.film_id,
+        f.title,
+        STRING_AGG(a.actor_name, ',') AS actors
+    FROM "destination_db"."public"."films" f
+    LEFT JOIN "destination_db"."public"."film_actors" fa ON f.film_id = fa.film_id
+    LEFT JOIN "destination_db"."public"."actors" a ON fa.actor_id = a.actor_id
+    GROUP BY f.film_id, f.title
+)
+
+-- join the 2 tables above
+SELECT
+    fwf.*,
+    fwa.actors
+FROM films_with_ratings fwf
+LEFT JOIN films_with_actors fwa ON fwf.film_id = fwa.film_id
+
+
+
+  );
+  
+[0m17:07:23.859970 [debug] [Thread-1 (]: SQL status: SELECT 20 in 0 seconds
+[0m17:07:23.876891 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:07:23.881561 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+alter table "destination_db"."public"."film_ratings" rename to "film_ratings__dbt_backup"
+[0m17:07:23.888522 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:23.897832 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:07:23.899919 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+alter table "destination_db"."public"."film_ratings__dbt_tmp" rename to "film_ratings"
+[0m17:07:23.906555 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:23.916328 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m17:07:23.918820 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:07:23.920850 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: COMMIT
+[0m17:07:23.952708 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:07:23.964577 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.film_ratings"
+[0m17:07:23.966598 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.film_ratings"} */
+drop table if exists "destination_db"."public"."film_ratings__dbt_backup" cascade
+[0m17:07:23.988175 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:07:23.994153 [debug] [Thread-1 (]: Timing info for model.custom_postgres.film_ratings (execute): 2024-03-28 17:07:23.735397 => 2024-03-28 17:07:23.994039
+[0m17:07:23.996159 [debug] [Thread-1 (]: On model.custom_postgres.film_ratings: Close
+[0m17:07:24.001335 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51fdea0d00>]}
+[0m17:07:24.009971 [info ] [Thread-1 (]: 4 of 5 OK created sql table model public.film_ratings .......................... [[32mSELECT 20[0m in 0.31s]
+[0m17:07:24.017440 [debug] [Thread-1 (]: Finished running node model.custom_postgres.film_ratings
+[0m17:07:24.022117 [debug] [Thread-1 (]: Began running node model.custom_postgres.specific_movie
+[0m17:07:24.024869 [info ] [Thread-1 (]: 5 of 5 START sql table model public.specific_movie ............................. [RUN]
+[0m17:07:24.029389 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.custom_postgres.specific_movie'
+[0m17:07:24.031403 [debug] [Thread-1 (]: Began compiling node model.custom_postgres.specific_movie
+[0m17:07:24.039896 [debug] [Thread-1 (]: Writing injected SQL for node "model.custom_postgres.specific_movie"
+[0m17:07:24.066073 [debug] [Thread-1 (]: Timing info for model.custom_postgres.specific_movie (compile): 2024-03-28 17:07:24.033756 => 2024-03-28 17:07:24.065857
+[0m17:07:24.068643 [debug] [Thread-1 (]: Began executing node model.custom_postgres.specific_movie
+[0m17:07:24.081178 [debug] [Thread-1 (]: Writing runtime sql for node "model.custom_postgres.specific_movie"
+[0m17:07:24.121940 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:07:24.124520 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: BEGIN
+[0m17:07:24.126599 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:07:24.180526 [debug] [Thread-1 (]: SQL status: BEGIN in 0 seconds
+[0m17:07:24.183140 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:07:24.186651 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+
+  
+    
+
+  create  table "destination_db"."public"."specific_movie__dbt_tmp"
+  as (
+    
+
+SELECT * 
+FROM "destination_db"."public"."films"
+WHERE title = 'Dunkirk'
+  );
+  
+[0m17:07:24.204410 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0 seconds
+[0m17:07:24.213979 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:07:24.215984 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+alter table "destination_db"."public"."specific_movie" rename to "specific_movie__dbt_backup"
+[0m17:07:24.222245 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:24.230374 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:07:24.232172 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+alter table "destination_db"."public"."specific_movie__dbt_tmp" rename to "specific_movie"
+[0m17:07:24.238724 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0 seconds
+[0m17:07:24.246560 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: COMMIT
+[0m17:07:24.249301 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:07:24.251708 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: COMMIT
+[0m17:07:24.263727 [debug] [Thread-1 (]: SQL status: COMMIT in 0 seconds
+[0m17:07:24.270816 [debug] [Thread-1 (]: Using postgres connection "model.custom_postgres.specific_movie"
+[0m17:07:24.273714 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: /* {"app": "dbt", "dbt_version": "1.4.7", "profile_name": "custom_postgres", "target_name": "dev", "node_id": "model.custom_postgres.specific_movie"} */
+drop table if exists "destination_db"."public"."specific_movie__dbt_backup" cascade
+[0m17:07:24.288382 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0 seconds
+[0m17:07:24.297950 [debug] [Thread-1 (]: Timing info for model.custom_postgres.specific_movie (execute): 2024-03-28 17:07:24.071238 => 2024-03-28 17:07:24.297821
+[0m17:07:24.300196 [debug] [Thread-1 (]: On model.custom_postgres.specific_movie: Close
+[0m17:07:24.305033 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c21aea46-739f-4d95-9ca5-7126fa13cdef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51fdea13c0>]}
+[0m17:07:24.311534 [info ] [Thread-1 (]: 5 of 5 OK created sql table model public.specific_movie ........................ [[32mSELECT 1[0m in 0.28s]
+[0m17:07:24.315361 [debug] [Thread-1 (]: Finished running node model.custom_postgres.specific_movie
+[0m17:07:24.321298 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:07:24.324719 [debug] [MainThread]: Using postgres connection "master"
+[0m17:07:24.327885 [debug] [MainThread]: On master: BEGIN
+[0m17:07:24.331213 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:07:24.417419 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[0m17:07:24.420282 [debug] [MainThread]: On master: COMMIT
+[0m17:07:24.422343 [debug] [MainThread]: Using postgres connection "master"
+[0m17:07:24.426872 [debug] [MainThread]: On master: COMMIT
+[0m17:07:24.432546 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[0m17:07:24.434657 [debug] [MainThread]: On master: Close
+[0m17:07:24.437818 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:07:24.441986 [debug] [MainThread]: Connection 'model.custom_postgres.specific_movie' was properly closed.
+[0m17:07:24.451108 [info ] [MainThread]: 
+[0m17:07:24.453975 [info ] [MainThread]: Finished running 5 table models in 0 hours 0 minutes and 4.40 seconds (4.40s).
+[0m17:07:24.462300 [debug] [MainThread]: Command end result
+[0m17:07:24.513962 [info ] [MainThread]: 
+[0m17:07:24.519053 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:07:24.525527 [info ] [MainThread]: 
+[0m17:07:24.531475 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m17:07:24.535485 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5200051fc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51fdea17e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51fdea0d00>]}
+[0m17:07:24.537965 [debug] [MainThread]: Flushing usage events
