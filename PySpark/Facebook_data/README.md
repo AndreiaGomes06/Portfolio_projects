@@ -1,4 +1,4 @@
-# Sales Analysis Project
+# Facebook Analysis Project
 
 This project analyses Facebook data using Pyspark. The dataset has been taken from Kaggle with a copy of raw data provided in repository itself.
 
